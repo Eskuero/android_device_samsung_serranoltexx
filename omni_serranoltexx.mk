@@ -17,15 +17,15 @@
 #
 
 # Inherit CM common phone and NFC specific stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/serranoltexx/serranoltexx.mk)
 
 # Device identifier
 PRODUCT_DEVICE := serranoltexx
-PRODUCT_NAME := cm_serranoltexx
+PRODUCT_NAME := omni_serranoltexx
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := GT-I9195
 PRODUCT_MANUFACTURER := samsung

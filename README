@@ -20,29 +20,30 @@
 
 * Description
 
-  This repository is for CyanogenMod (4.4.3) on Samsung Galaxy SIV Mini a.k.a Samsung Serranoltexx.
+  This repository is for OmniROM (4.4.4) on Samsung Galaxy SIV Mini a.k.a Samsung Serranoltexx.
   It's still a work in progress.
 
-* How To Build CyanogenMod (4.4.3) for Samsung Serranoltexx
+* How To Build OmniROM (4.4.4) for Samsung Serranoltexx
 
   - Make a workspace
 
-  $ mkdir -p ~/cyanogen
-  $ cd ~/cyanogen
+  $ mkdir -p ~/omnirom
+  $ cd ~/omnirom
 
 
   - Do repo init & sync
 
-  $ repo init -u git://github.com/CyanogenMod/android.git -b cm-11.0
+  $ repo init -u git://github.com/omnirom/android.git -b android-4.4
 
 
   - Create .repo/local_manifests/roomservice.xml with the following content:
 
   <?xml version="1.0" encoding="UTF-8"?>
   <manifest>
-      <project name="OliverG96/android_device_samsung_serranoltex" path="device/samsung/serranoltex" />
-      <project name="OliverG96/android_kernel_samsung_serranoltex" path="kernel/samsung/serranoltex" />
-      <project name="OliverG96/android_vendor_samsung_serranoltex" path="vendor/samsung/serranoltex" />
+    <remote name="oliver" fetch="https://github.com/OliverG96/" />
+    <project name="android_device_samsung_serranoltexx" path="device/samsung/serranoltexx" revision="android-4.4" remote="oliver" />
+    <project name="android_kernel_samsung_serranoltexx" path="kernel/samsung/serranoltexx" revision="android-4.4" remote="oliver" />
+    <project name="android_vendor_samsung_serranoltexx" path="vendor/samsung/serranoltexx" revision="android-4.4" remote="oliver" />
   </manifest>
 
   $ repo sync
@@ -50,10 +51,10 @@
   - Setup environment
 
   $ source build/envsetup.sh
-  $ lunch cm_serranoltex-eng
+  $ lunch omni_serranoltex-eng
 
 
-  - Build CyanogenMod (4.4.3)
+  - Build OmniROM (4.4.4)
 
   $ export USE_CCACHE=1
   $ make -j4 bacon
@@ -61,7 +62,7 @@
 
 * Thanks
 
-  CyanogenMod Team
+  OmniROM Team
   arco
   Andreas Schneider
   Team Canjica *
