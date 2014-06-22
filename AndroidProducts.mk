@@ -18,4 +18,4 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/serranoltexx.mk \
-    $(LOCAL_DIR)/omni.mk
+    $(LOCAL_DIR)/omni_serranoltexx.mk

@@ -1,3 +1,12 @@
+on init
+    mkdir /efs
+    mkdir /sdcard
+    mkdir /external_sd
+
+    # USB initialization
+    write /sys/class/android_usb/android0/idVendor 04e8
+    write /sys/class/android_usb/android0/idProduct 6860
+
 on boot
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1

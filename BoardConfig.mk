@@ -52,7 +52,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_NO_INITLOGO := true
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_serranolte
-TARGET_LIBINIT_DEFINES_FILE := device/samsung/serranoltexx/init/init_serranolte.c
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/serranoltexx
@@ -148,8 +147,21 @@ BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TW_HAS_DOWNLOAD_MODE := true
+TW_NO_REBOOT_BOOTLOADER := true
+
+DEVICE_RESOLUTION := 540x960
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_NO_SCREEN_BLANK := true
+TW_BRIGHTNESS_PATH := "/sys/devices/platform/mipi_samsung_oled.1281/lcd/panel/backlight"
+TW_MAX_BRIGHTNESS := 255
+
+TW_INCLUDE_JB_CRYPTO := true
+TW_NO_USB_STORAGE := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_INTERNAL_STORAGE_PATH := "/data/media/0"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+
 TARGET_RECOVERY_FSTAB := device/samsung/serranoltexx/rootdir/fstab.qcom
-TARGET_RECOVERY_INITRC := device/samsung/serranoltexx/recovery/init.rc
-TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/lcd/panel/backlight\"
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
