@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Sometimes, PDU has garbages. So, need to use valid index -->
+    <integer name="config_valid_wappush_index">7</integer>
+</resources>

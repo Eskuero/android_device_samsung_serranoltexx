@@ -1,0 +1,2 @@
+add_lunch_combo cm_serranoltexx-eng
+add_lunch_combo cm_serranoltexx-userdebug
