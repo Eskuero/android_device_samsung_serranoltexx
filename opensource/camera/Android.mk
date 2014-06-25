@@ -1,27 +1,18 @@
-#
-# Copyright (C) 2014 The Android Open Source Project
-# Copyright (C) 2014 The CyanogenMod Project <http://www.cyanogenmod.org>
-# Modified by Óliver García Albertos (oliverarafo@gmail.com)
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
 ifeq ($(TARGET_PROVIDES_CAMERA_HAL),true)
+
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 ifeq ($(TARGET_NEED_DISABLE_AUTOFOCUS),true)
     LOCAL_CFLAGS += -DDISABLE_AUTOFOCUS
+endif
+
+ifeq ($(TARGET_NEED_DISABLE_FACE_DETECTION),true)
+    LOCAL_CFLAGS += -DDISABLE_FACE_DETECTION
+endif
+
+ifeq ($(TARGET_NEED_DISABLE_FACE_DETECTION_BOTH_CAMERAS),true)
+    LOCAL_CFLAGS += -DDISABLE_FACE_DETECTION_BOTH_CAMERAS
 endif
 
 ifeq ($(TARGET_NEED_CAMERA_ZSL),true)
@@ -36,8 +27,16 @@ ifeq ($(TARGET_NEED_PREVIEW_SIZE_FIXUP),true)
     LOCAL_CFLAGS += -DPREVIEW_SIZE_FIXUP
 endif
 
+ifeq ($(TARGET_NEED_FFC_PICTURE_FIXUP),true)
+    LOCAL_CFLAGS += -DFFC_PICTURE_FIXUP
+endif
+
 ifeq ($(TARGET_NEED_SAMSUNG_CAMERA_MODE),true)
     LOCAL_CFLAGS += -DSAMSUNG_CAMERA_MODE
+endif
+
+ifeq ($(TARGET_ADD_ISO_MODE_50),true)
+    LOCAL_CFLAGS += -DISO_MODE_50
 endif
 
 ifeq ($(TARGET_ADD_ISO_MODE_1600),true)
@@ -46,6 +45,10 @@ endif
 
 ifeq ($(TARGET_ADD_ISO_MODE_HJR),true)
     LOCAL_CFLAGS += -DISO_MODE_HJR
+endif
+
+ifeq ($(TARGET_VIDEO_PREVIEW_ALWAYS_MAX),true)
+    LOCAL_CFLAGS += -DVIDEO_PREVIEW_ALWAYS_MAX
 endif
 
 LOCAL_SRC_FILES := \
@@ -59,4 +62,5 @@ LOCAL_MODULE := camera.msm8960
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
 endif
