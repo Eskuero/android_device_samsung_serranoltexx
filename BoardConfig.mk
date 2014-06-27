@@ -137,7 +137,6 @@ BOARD_NFC_HAL_SUFFIX := msm8960
 
 # Power
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.qcom
-TARGET_POWERHAL_VARIANT := qcom
 
 # Time service
 BOARD_USES_QC_TIME_SERVICES := true

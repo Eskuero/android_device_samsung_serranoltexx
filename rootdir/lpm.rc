@@ -70,10 +70,6 @@ service adbd /sbin/adbd
     class core
     disabled
 
-# adbd on at boot in emulator
-on property:ro.kernel.qemu=1
-    start adbd
-
 # This property trigger has added to imitiate the previous behavior of "adb root".
 # The adb gadget driver used to reset the USB bus when the adbd daemon exited,
 # and the host side adb relied on this behavior to force it to reconnect with the
