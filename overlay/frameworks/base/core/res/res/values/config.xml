@@ -223,4 +223,7 @@
 
     <!-- Default interface to monitor data use -->
     <string name="config_datause_iface">rmnet0</string>
+
+    <!-- Boolean indicating whether we want button brightness support -->
+    <bool name="config_button_brightness_support">true</bool>
 </resources>

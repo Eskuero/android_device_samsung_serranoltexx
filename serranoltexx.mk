@@ -270,7 +270,7 @@ PRODUCT_PACKAGES += \
 
 # Misc packages
 PRODUCT_PACKAGES += \
-    Torch \
+    OmniTorch \
     com.android.future.usb.accessory
 
 # Non-device-specific/to-be-clasified props
