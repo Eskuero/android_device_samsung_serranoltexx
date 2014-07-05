@@ -222,6 +222,8 @@ PRODUCT_PACKAGES += \
     qrngd
 
 # Power
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
 PRODUCT_PACKAGES += \
     power.msm8960
 
