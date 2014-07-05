@@ -206,7 +206,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
-    persist.audio.handset.mic=digital
+    persist.audio.handset.mic=digital \
+    persist.audio.lowlatency.rec=false \
+    audio.gapless.playback.disable=true
 
 # Radio FM
 PRODUCT_PACKAGES += \
@@ -288,7 +290,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
     persist.timed.enable=true \
-    persist.audio.lowlatency.rec=false \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # Screen size
