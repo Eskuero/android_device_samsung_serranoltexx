@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Whether device has hardware buttons -->
+    <bool name="config_has_hardware_buttons">true</bool>
+</resources>
