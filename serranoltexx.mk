@@ -183,8 +183,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # NFC
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/etc/libnfc-brcm-20791b04.conf:system/etc/libnfc-brcm-20791b04.conf \
-    $(LOCAL_PATH)/configs/etc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf \
     $(LOCAL_PATH)/configs/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 PRODUCT_PACKAGES += \
     nfc_nci.msm8960 \
