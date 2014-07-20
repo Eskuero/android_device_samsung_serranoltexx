@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Ignore bogus preferred preview size -->
-    <bool name="ignorePreferredPreviewSizeForVideo">true</bool>
-    <!-- Enable histogram support -->
-    <bool name="enableHistogram">true</bool>
-</resources>
