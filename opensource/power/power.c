@@ -27,7 +27,6 @@
 #include <hardware/power.h>
 
 #define SCALING_GOVERNOR_PATH "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
-#define BOOSTPULSE_ONDEMAND "/sys/devices/system/cpu/cpufreq/ondemand/boostpulse"
 #define BOOSTPULSE_INTERACTIVE "/sys/devices/system/cpu/cpufreq/interactive/boostpulse"
 #define NOTIFY_ON_MIGRATE "/dev/cpuctl/apps/cpu.notify_on_migrate"
 
@@ -106,18 +105,10 @@ static int get_scaling_governor() {
     return 0;
 }
 
-#ifdef SET_INTERACTIVE_EXT
-extern void cm_power_set_interactive_ext(int on);
-#endif
-
 static void cm_power_set_interactive(struct power_module *module, int on)
 {
     sysfs_write(NOTIFY_ON_MIGRATE, on ? "1" : "0");
-#ifdef SET_INTERACTIVE_EXT
-    cm_power_set_interactive_ext(on);
-#endif
 }
-
 
 static void configure_governor()
 {
@@ -126,20 +117,22 @@ static void configure_governor()
     if (strncmp(governor, "ondemand", 8) == 0) {
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/up_threshold", "90");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/io_is_busy", "1");
-        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor", "2");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor", "4");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/down_differential", "10");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/up_threshold_multi_core", "70");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/down_differential_multi_core", "3");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/optimal_freq", "918000");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/sync_freq", "1026000");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/up_threshold_any_cpu_load", "80");
-        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/input_boost", "1134000");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/input_boost", "1026000");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/sampling_rate", "50000");
 
     } else if (strncmp(governor, "interactive", 11) == 0) {
         sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/min_sample_time", "90000");
         sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/io_is_busy", "1");
-        sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/hispeed_freq", "1134000");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/hispeed_freq", "1026000");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/sync_freq", "1026000");
+        sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq", "1026000");
         sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay", "30000");
         sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/timer_rate", "30000");
     }
@@ -156,9 +149,7 @@ static int boostpulse_open(struct cm_power_module *cm)
             ALOGE("Can't read scaling governor.");
             cm->boostpulse_warned = 1;
         } else {
-            if (strncmp(governor, "ondemand", 8) == 0)
-                cm->boostpulse_fd = open(BOOSTPULSE_ONDEMAND, O_WRONLY);
-            else if (strncmp(governor, "interactive", 11) == 0)
+            if (strncmp(governor, "interactive", 11) == 0)
                 cm->boostpulse_fd = open(BOOSTPULSE_INTERACTIVE, O_WRONLY);
 
             if (cm->boostpulse_fd < 0 && !cm->boostpulse_warned) {
@@ -166,9 +157,10 @@ static int boostpulse_open(struct cm_power_module *cm)
                 ALOGV("Error opening boostpulse: %s\n", buf);
                 cm->boostpulse_warned = 1;
             } else if (cm->boostpulse_fd > 0) {
-                configure_governor();
                 ALOGD("Opened %s boostpulse interface", governor);
             }
+
+        configure_governor();
         }
     }
 
