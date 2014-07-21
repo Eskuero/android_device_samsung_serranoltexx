@@ -209,6 +209,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.gapless.playback.disable=true
 
 # Radio FM
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh
 PRODUCT_PACKAGES += \
     qcom.fmradio \
     libqcomfm_jni \
