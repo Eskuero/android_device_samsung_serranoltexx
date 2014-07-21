@@ -114,7 +114,8 @@ PRODUCT_BOOT_JARS += \
     qcmediaplayer
 PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=true \
-    lpa.use-stagefright=true
+    lpa.use-stagefright=true \
+    qcom.hw.aac.encoder=true
 
 # Camera
 PRODUCT_PACKAGES += \
