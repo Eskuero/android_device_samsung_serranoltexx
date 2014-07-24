@@ -1,6 +1,32 @@
 [
   {
+    "remote": "oliver",
+    "repository": "android_kernel_samsung_serranoltexx",
+    "target_path": "kernel/samsung/serranoltexx",
+    "revision": "android-4.4"
+  },
+  {
+    "remote": "oliver",
+    "repository": "android_vendor_samsung_serranoltexx",
+    "target_path": "vendor/samsung/serranoltexx",
+    "revision": "android-4.4"
+  },
+  {
+    "remote": "cyano",
+    "repository": "android_hardware_qcom_fm",
+    "target_path": "hardware/qcom/fm",
+    "revision": "cm-11.0"
+  },
+  {
+    "remote": "omnirom",
     "repository": "android_hardware_samsung",
-    "target_path": "hardware/samsung"
+    "target_path": "hardware/samsung",
+    "revision": "android-4.4"
+  },
+  {
+    "remote": "cyano",
+    "repository": "android_system_qcom",
+    "target_path": "system/qcom",
+    "revision": "cm-11.0"
   }
 ]

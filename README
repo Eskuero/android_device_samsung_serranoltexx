@@ -40,17 +40,15 @@
 
   <?xml version="1.0" encoding="UTF-8"?>
   <manifest>
-    <remote fetch="https://github.com/OliverG96/" name="oliver" />
-    <project name="android_device_samsung_serranoltexx" path="device/samsung/serranoltexx" remote="oliver" revision="android-4.4" />
-    <project name="android_kernel_samsung_serranoltexx" path="kernel/samsung/serranoltexx" remote="oliver" revision="android-4.4" />
-    <project name="android_vendor_samsung_serranoltexx" path="vendor/samsung/serranoltexx" remote="oliver" revision="android-4.4" />
-    <project name="android_hardware_samsung" path="hardware/samsung" remote="omnirom" revision="android-4.4" />
-    <remove-project name="android_hardware_qcom_audio-caf" />
-    <remove-project name="android_hardware_qcom_display-caf" />
-    <remove-project name="android_hardware_qcom_media-caf" />
-    <project path="hardware/qcom/audio-caf" name="android_hardware_qcom_audio-caf" remote="omnirom" revision="qcom-4.4_2.7" />
-    <project path="hardware/qcom/display-caf" name="android_hardware_qcom_display-caf" remote="omnirom" revision="qcom-4.4_2.7" />
-    <project path="hardware/qcom/media-caf" name="android_hardware_qcom_media-caf" remote="omnirom" revision="qcom-4.4_2.7" />
+  <remote fetch="https://github.com/OliverG96/" name="oliver" />
+  <remote fetch="https://github.com/CyanogenMod/" name="cyano" />
+  <project name="android_device_samsung_serranoltexx" path="device/samsung/serranoltexx" remote="oliver" revision="android-4.4" />
+  <remove-project name="android_hardware_qcom_audio-caf" />
+  <remove-project name="android_hardware_qcom_display-caf" />
+  <remove-project name="android_hardware_qcom_media-caf" />
+  <project name="android_hardware_qcom_audio-caf" path="hardware/qcom/audio-caf" remote="omnirom" revision="qcom-4.4_2.7" />
+  <project name="android_hardware_qcom_display-caf" path="hardware/qcom/display-caf" remote="omnirom" revision="qcom-4.4_2.7" />
+  <project name="android_hardware_qcom_media-caf" path="hardware/qcom/media-caf" remote="omnirom" revision="qcom-4.4_2.7" />
   </manifest>
 
   $ repo sync
