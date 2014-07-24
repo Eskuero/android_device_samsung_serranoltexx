@@ -70,26 +70,4 @@ echo 70 > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load
 echo 1 > /dev/cpuctl/apps/cpu.notify_on_migrate
 echo 1 > /sys/module/msm_thermal/core_control/enabled
 
-# Set msm_mpdecision parameters
-echo 45000 > /sys/module/msm_mpdecision/slack_time_max_us
-echo 15000 > /sys/module/msm_mpdecision/slack_time_min_us
-echo 100000 > /sys/module/msm_mpdecision/em_win_size_min_us
-echo 1000000 > /sys/module/msm_mpdecision/em_win_size_max_us
-echo 3 > /sys/module/msm_mpdecision/online_util_pct_min
-echo 25 > /sys/module/msm_mpdecision/online_util_pct_max
-echo 97 > /sys/module/msm_mpdecision/em_max_util_pct
-echo 2 > /sys/module/msm_mpdecision/rq_avg_poll_ms
-echo 10 > /sys/module/msm_mpdecision/mp_em_rounding_point_min
-echo 85 > /sys/module/msm_mpdecision/mp_em_rounding_point_max
-echo 50 > /sys/module/msm_mpdecision/iowait_threshold_pct
-
-# Set permissions for the nodes needed by display on/off hook
-chown -h system /sys/module/msm_mpdecision/slack_time_max_us
-chown -h system /sys/module/msm_mpdecision/slack_time_min_us
-chmod -h 664 /sys/module/msm_mpdecision/slack_time_max_us
-chmod -h 664 /sys/module/msm_mpdecision/slack_time_min_us
-
 echo 10 > /sys/devices/platform/msm_sdcc.3/idle_timeout
-
-# Post-setup services
-start mpdecision
