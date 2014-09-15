@@ -152,8 +152,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/init.qcom.mdm_links.sh:system/etc/init.qcom.mdm_links.sh \
     $(LOCAL_PATH)/configs/etc/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SamsungQualcommRIL \
-    ro.telephony.ril.v3=samsungEMSReq \
+    ro.telephony.ril_class=SamsungMSM8930RIL \
     telephony.lteOnGsmDevice=1 \
     ro.telephony.default_network=9 \
     ro.telephony.call_ring.multiple=0 \
@@ -168,19 +167,29 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_3="" \
     ril.subscription.types=NV,RUIM \
     ro.ril.hsxpa=1 \
+    ro.config.ehrpd=true \
     ro.ril.gprsclass=10 \
+    persist.eons.enabled=true \
     persist.radio.add_power_save=1 \
     persist.radio.apm_sim_not_pwdn=1 \
+    persist.radio.fill_eons=1 \
+    persist.radio.prefer_spn=0 \
+    persist.data.netmgrd.qos.enable=false \
     ro.ril.transmitpower=true
 
 # GPS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/etc/gps.conf:system/etc/gps.conf
+    $(LOCAL_PATH)/configs/etc/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/configs/etc/sap.conf:system/etc/sap.conf \
+    $(LOCAL_PATH)/configs/etc/sec_config:system/etc/sec_config
 PRODUCT_PACKAGES += \
     gps.msm8960
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qmienabled=true \
-    persist.gps.qc_nlp_in_use=0
+    persist.gps.qc_nlp_in_use=1 \
+    ro.qc.sdk.izat.premium_enabled=0 \
+    ro.qc.sdk.izat.service_mask=0x0 \
+    ro.gps.agps_provider=1
 
 # NFC
 PRODUCT_COPY_FILES += \
@@ -207,7 +216,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=digital \
     persist.audio.lowlatency.rec=false \
-    audio.gapless.playback.disable=true
+    audio.gapless.playback.disable=true \
+    ro.config.max_starting_bg=8
 
 # Radio FM
 PRODUCT_COPY_FILES += \
